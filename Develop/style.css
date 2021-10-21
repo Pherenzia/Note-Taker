@@ -1,0 +1,15 @@
+h1 {
+    font-size: 4rem;
+    text-align: center;
+    text-justify: auto;
+    border: 6rem;
+    background-color: aqua;
+}
+button {
+    background-color: aqua;
+    position: absolute;
+    bottom: 50%;
+    left: 45%;
+    right: 45%;
+    margin: auto;
+}
