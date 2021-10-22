@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { v4: uuidv4 } = require("uuid");
 const { readAndAppend, readFromFile } = require("../helpers/fsUtils");
+const path = require('path')
 
 
 
@@ -9,7 +10,7 @@ router.get("/notes", (req, res) => {
     readFromFile("./db/db.json").then((data) => res.json(JSON.parse(data)));
   });
   
-  router.get("/notes/:id", (req, res) => {
+router.get("/notes/:id", (req, res) => {
       readFromFile(path.join(__dirname, "./db/db.json"), "utf-8")
         .then((data) => {
           res.json(JSON.parse(data));
@@ -20,7 +21,7 @@ router.get("/notes", (req, res) => {
         });
     });
   
-  router.post("/", (req, res) => {
+router.post("/notes", (req, res) => {
       console.log(req.body);
     
       const { title, text } = req.body;
@@ -32,7 +33,7 @@ router.get("/notes", (req, res) => {
           id: uuidv4(),
         };
     
-        readAndAppend(newNote, "./db/db.json");
+        readAndAppend(newNote, "../develop/db/db.json");
         res.json("Tip added successfully 🚀");
       } else {
         res.error("Error in adding tip");
